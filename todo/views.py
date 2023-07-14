@@ -35,6 +35,15 @@ def detail(request, task_id):
     }
     return render(request, 'todo/detail.html', context)
 
+def clse(request, task_id):
+    try:
+        task = Task.objects.get(pk=task_id)
+    except Task.DoesNotExist:
+        raise Http404("Task does not exist")
+    task.completed = True
+    task.save()
+    return redirect(index)
+    
 def update(request, task_id):
     try:
         task = Task.objects.get(pk=task_id)
@@ -56,5 +65,7 @@ def delete(request, task_id):
         task = Task.objects.get(pk=task_id)
     except Task.DoesNotExist:
         raise Http404("Task does not exist")
+    task.completed = True
+    task.save()
     task.delete()
     return redirect(index)
