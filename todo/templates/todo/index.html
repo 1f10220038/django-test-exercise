@@ -6,6 +6,7 @@
     <title>To Do Application</title>
     <meta charset="UTF-8">
     <meta name="author" content="INIAD">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
   </head>
 
   <body>
@@ -28,8 +29,9 @@
     <br>
 
     <div>
-      <a href="{% url 'index' %}?order=due">Sort by Due Date</a> |
-      <a href="{% url 'index' %}?order=post">Sort by Posted Date</a>
+      <a class="button" href="{% url 'index' %}?order=due">Sort by Due Date</a> 
+      <br>
+      <a class="button" href="{% url 'index' %}?order=post">Sort by Posted Date</a>
     </div>
 
     {% for task in tasks %}
